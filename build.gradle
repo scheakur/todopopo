@@ -45,4 +45,4 @@ dependencies {
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
-defaultTasks "clean", "build", "installApp"
+defaultTasks "clean", "build"
