@@ -23,7 +23,7 @@ try {
 } catch (ignore) {}
 
 jar {
-	baseName = "totopopo"
+	baseName = "todopopo"
 	version =  "0.0.1-SNAPSHOT"
 }
 
