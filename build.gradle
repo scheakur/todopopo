@@ -1,0 +1,48 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "http://repo.spring.io/snapshot" }
+		maven { url "http://repo.spring.io/milestone" }
+		maven { url "http://dl.bintray.com/vermeulen-mp/gradle-plugins" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.BUILD-SNAPSHOT")
+		classpath("org.springframework:springloaded:1.2.0.RELEASE")
+		classpath("com.wiredforcode:gradle-heroku-plugin:1.0.0")
+	}
+}
+
+apply plugin: "java"
+apply plugin: "spring-boot"
+apply plugin: "idea"
+
+apply plugin: "heroku"
+
+try {
+	apply from: "heroku.gradle"
+} catch (ignore) {}
+
+jar {
+	baseName = "totopopo"
+	version =  "0.0.1-SNAPSHOT"
+}
+
+idea {
+	module {
+		inheritOutputDirs = false
+		outputDir = file("$buildDir/classes/main/")
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url "http://repo.spring.io/snapshot" }
+	maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+defaultTasks "clean", "build", "installApp"
