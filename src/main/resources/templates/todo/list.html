@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Todopopo</title>
+	<script src="../../static/js/main.js" th:src="@{/js/main.js}"></script>
 </head>
 <body>
 	<h1>Todo List</h1>
@@ -10,6 +11,14 @@
 		<div th:each="todo : ${todoList}" th:remove="tag">
 			<div th:replace="todo/entry :: todo(${todo})">Foo</div>
 		</div>
+	</div>
+	<div>
+		<form name="todoForm" action="/" method="post">
+			<input type="text" name="title"/>
+			<input type="date" name="duedate"/>
+			<input type="hidden" name="offset"/>
+			<input type="submit" value="Add"/>
+		</form>
 	</div>
 </body>
 </html>
