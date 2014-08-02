@@ -1,10 +1,10 @@
 package com.scheakur.todopopo.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
