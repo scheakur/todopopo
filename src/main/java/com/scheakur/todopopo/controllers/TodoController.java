@@ -5,15 +5,14 @@ import com.scheakur.todopopo.models.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("")
@@ -36,6 +35,13 @@ public class TodoController {
 		ZonedDateTime dueDate = dueDateFrom(dateStr, offsetMinutes);
 		repo.save(new Todo(title, dueDate));
 		return list(model);
+	}
+
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public String done(@PathVariable("id") String id, Model model) {
+		repo.delete(UUID.fromString(id));
+		return "ok";
 	}
 
 	private ZonedDateTime dueDateFrom(String dateStr, int offsetMinutes) {

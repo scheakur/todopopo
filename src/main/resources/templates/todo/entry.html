@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div th:fragment="todo(todo)">
-		<label><input type="checkbox" th:name="${todo.id}" value="1" th:text="${todo.title}"/></label>
+		<label><input type="checkbox" th:name="id" th:value="${todo.id}" th:text="${todo.title}"/></label>
 	</div>
 </body>
 </html>
