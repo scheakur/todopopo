@@ -6,7 +6,8 @@
 </head>
 <body>
 	<div th:fragment="todo(todo)">
-		<label><input type="checkbox" th:name="id" th:value="${todo.id}" th:text="${todo.title}"/></label>
+		<label><input type="checkbox" th:name="id" th:value="${todo.id}" th:text="${todo.title}"
+		              th:classappend="'todo-status-' + ${todo.status.name}" th:checked="${todo.status.name == 'done'}"/></label>
 	</div>
 </body>
 </html>

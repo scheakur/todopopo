@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
@@ -40,7 +37,9 @@ public class TodoController {
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public String done(@PathVariable("id") String id, Model model) {
-		repo.delete(UUID.fromString(id));
+		Todo todo = repo.findOne(UUID.fromString(id));
+		Todo done = todo.done(LocalDateTime.now(Clock.systemUTC()));
+		repo.save(done);
 		return "ok";
 	}
 
