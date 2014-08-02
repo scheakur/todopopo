@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<title>Todopopo</title>
+</head>
+<body>
+	<div th:fragment="todo(todo)">
+		<label><input type="checkbox" th:name="${todo.id}" value="1" th:text="${todo.title}"/></label>
+	</div>
+</body>
+</html>
