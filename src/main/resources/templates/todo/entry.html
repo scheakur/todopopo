@@ -5,9 +5,9 @@
 	<title>Todopopo</title>
 </head>
 <body>
-	<div th:fragment="todo(todo)">
+	<div th:fragment="todo(todo)" th:classappend="'todo-status-' + ${todo.status.name}">
 		<label><input type="checkbox" th:name="id" th:value="${todo.id}" th:text="${todo.title}"
-		              th:classappend="'todo-status-' + ${todo.status.name}" th:checked="${todo.status.name == 'done'}"/></label>
+		              th:checked="${todo.status.name == 'done'}"/></label>
 	</div>
 </body>
 </html>
