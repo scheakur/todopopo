@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
@@ -42,6 +43,10 @@ public class Todo {
 	public Todo done(LocalDateTime utcDoneDate) {
 		ZonedDateTime doneDate = utcDoneDate.atZone(dueDate.getZone());
 		return new Todo(this, doneDate);
+	}
+
+	public String getFormattedDueDate() {
+		return dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
 	}
 
 }
