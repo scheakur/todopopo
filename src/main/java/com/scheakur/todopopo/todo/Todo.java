@@ -1,4 +1,4 @@
-package com.scheakur.todopopo.models;
+package com.scheakur.todopopo.todo;
 
 import lombok.Getter;
 import lombok.ToString;

@@ -1,4 +1,4 @@
-package com.scheakur.todopopo.models;
+package com.scheakur.todopopo.todo;
 
 import org.springframework.data.repository.CrudRepository;
 

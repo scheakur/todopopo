@@ -1,7 +1,7 @@
 package com.scheakur.todopopo.controllers;
 
-import com.scheakur.todopopo.models.Todo;
-import com.scheakur.todopopo.models.TodoRepository;
+import com.scheakur.todopopo.todo.Todo;
+import com.scheakur.todopopo.todo.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
