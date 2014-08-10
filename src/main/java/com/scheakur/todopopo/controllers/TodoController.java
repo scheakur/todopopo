@@ -37,8 +37,17 @@ public class TodoController {
 	@ResponseBody
 	public String done(@PathVariable("id") String id, Model model) {
 		Todo todo = service.findOne(id);
-		Todo done = todo.done(LocalDateTime.now(Clock.systemUTC()));
-		service.save(done);
+		todo.done(LocalDateTime.now(Clock.systemUTC()));
+		service.save(todo);
+		return "ok";
+	}
+
+	@RequestMapping(value = "{id}", method = RequestMethod.POST)
+	@ResponseBody
+	public String undone(@PathVariable("id") String id, Model model) {
+		Todo todo = service.findOne(id);
+		todo.undone();
+		service.save(todo);
 		return "ok";
 	}
 

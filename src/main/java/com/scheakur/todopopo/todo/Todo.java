@@ -17,8 +17,8 @@ public class Todo {
 	@Id @Getter private final UUID id;
 	@Getter private String title;
 	@Getter private ZonedDateTime dueDate;
-	@Getter private final ZonedDateTime doneDate;
-	@Getter private final TodoStatus status;
+	@Getter private ZonedDateTime doneDate;
+	@Getter private TodoStatus status;
 
 	protected Todo() {
 		this.id = UUID.randomUUID();
@@ -32,21 +32,20 @@ public class Todo {
 		this.dueDate = dueDate;
 	}
 
-	private Todo(Todo todo, ZonedDateTime doneDate) {
-		this.id = todo.id;
-		this.title = todo.title;
-		this.dueDate = todo.dueDate;
+	public void done(LocalDateTime utcDoneDate) {
+		ZonedDateTime doneDate = utcDoneDate.atZone(dueDate.getZone());
 		this.doneDate = doneDate;
 		this.status = TodoStatus.DONE;
 	}
 
-	public Todo done(LocalDateTime utcDoneDate) {
-		ZonedDateTime doneDate = utcDoneDate.atZone(dueDate.getZone());
-		return new Todo(this, doneDate);
+	public void undone() {
+		this.doneDate = null;
+		this.status = TodoStatus.TODO;
 	}
 
 	public String getFormattedDueDate() {
 		return dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
 	}
+
 
 }

@@ -6,7 +6,7 @@
     window.todoForm.offset.value = now.getTimezoneOffset();
 
     var todoList = document.querySelector('.todo-list');
-    todoList.addEventListener('change', done);
+    todoList.addEventListener('change', changeStatus);
   }
 
   function formatDate(date) {
@@ -17,7 +17,7 @@
     return ('00' + n).slice(-2);
   }
 
-  function done(event) {
+  function changeStatus(event) {
     var request = new XMLHttpRequest();
     request.addEventListener('load', function (event) {
       console.log(event);
@@ -25,7 +25,8 @@
     });
 
     var id = event.target.value;
-    request.open('DELETE', '/' + id, false);
+    var action = (event.target.checked) ? 'DELETE' : 'POST';
+    request.open(action, '/' + id, false);
     request.send(null);
   }
 
