@@ -1,9 +1,9 @@
 package com.scheakur.todopopo.todo;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.UUID;
 
-public interface TodoRepository extends CrudRepository<Todo, UUID> {
+public interface TodoRepository extends PagingAndSortingRepository<Todo, UUID> {
 
 }

@@ -1,6 +1,7 @@
 package com.scheakur.todopopo.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,7 +18,7 @@ public class TodoService {
 	TodoRepository repo;
 
 	public Iterable<Todo> findAll() {
-		return repo.findAll();
+		return repo.findAll(new Sort("status", "dueDate"));
 	}
 
 	public Todo findOne(String id) {
