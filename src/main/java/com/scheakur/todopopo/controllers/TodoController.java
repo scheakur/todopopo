@@ -11,7 +11,7 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("todo")
 public class TodoController {
 
 	@Autowired

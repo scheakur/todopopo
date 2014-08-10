@@ -26,7 +26,7 @@
 
     var id = event.target.value;
     var action = (event.target.checked) ? 'DELETE' : 'POST';
-    request.open(action, '/' + id, false);
+    request.open(action, 'todo/' + id, false);
     request.send(null);
   }
 
