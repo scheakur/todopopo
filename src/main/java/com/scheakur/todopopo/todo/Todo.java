@@ -1,5 +1,6 @@
 package com.scheakur.todopopo.todo;
 
+import com.scheakur.todopopo.common.Const;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -23,7 +24,7 @@ public class Todo {
 	protected Todo() {
 		this.id = UUID.randomUUID();
 		this.status = TodoStatus.TODO;
-		this.doneDate = null;
+		this.doneDate = Const.EMPTY_DATE;
 	}
 
 	public Todo(String title, ZonedDateTime dueDate) {
@@ -39,7 +40,7 @@ public class Todo {
 	}
 
 	public void undone() {
-		this.doneDate = null;
+		this.doneDate = Const.EMPTY_DATE;
 		this.status = TodoStatus.TODO;
 	}
 
